@@ -1,20 +1,15 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="Matthew Longworth">
-//   (c) Matthew Longworth 2016
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System.Reflection;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Roboworld.Recipes.WebApi")]
+[assembly: AssemblyTitle("Roboworld.Communication.WebApi")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Roboworld.Recipes.WebApi")]
+[assembly: AssemblyProduct("Roboworld.Communication.WebApi")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -25,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8d654058-51ec-4e25-a024-acd582f83b02")]
+[assembly: Guid("7359cd89-23bd-4746-90d7-fc8d73466835")]
 
 // Version information for an assembly consists of the following four values:
 //

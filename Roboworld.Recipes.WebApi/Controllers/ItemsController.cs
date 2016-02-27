@@ -37,6 +37,13 @@ namespace Roboworld.Recipes.WebApi.Controllers
             return this.Ok(this.session.QueryOver<Item>().List());
         }
 
+        [HttpGet]
+        [Route("test")]
+        public IHttpActionResult JsonTest()
+        {
+            return this.Ok(new object[] { 1, "two", "3" });
+        }
+
         [HttpPost]
         [Route("")]
         public IHttpActionResult CreateItem(CreateItemDto item)
