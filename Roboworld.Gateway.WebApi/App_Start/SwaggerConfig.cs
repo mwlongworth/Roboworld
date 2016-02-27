@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.Communication.WebApi
+namespace Roboworld.Gateway.WebApi
 {
     using System;
     using System.Net.Http;
@@ -21,7 +21,7 @@ namespace Roboworld.Communication.WebApi
             config.EnableSwagger(
               c =>
               {
-                  c.SingleApiVersion("v1", "Communication Service API").Description(Description);
+                  c.SingleApiVersion("v1", "Gateway Service API").Description(Description);
                   c.RootUrl(req => new Uri(req.RequestUri, req.GetRequestContext().VirtualPathRoot).ToString());
               }).EnableSwaggerUi();
         }

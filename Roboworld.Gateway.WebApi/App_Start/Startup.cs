@@ -4,11 +4,11 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Roboworld.Communication.WebApi;
+using Roboworld.Gateway.WebApi;
 
 [assembly: Microsoft.Owin.OwinStartup(typeof(Startup))]
 
-namespace Roboworld.Communication.WebApi
+namespace Roboworld.Gateway.WebApi
 {
     using System.Web.Http;
 

@@ -4,11 +4,9 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.Communication.WebApi.Controllers
+namespace Roboworld.Gateway.WebApi.Controllers
 {
-    using System;
     using System.Net;
-    using System.Security.Cryptography.X509Certificates;
     using System.Web.Http;
 
     [RoutePrefix("robot")]

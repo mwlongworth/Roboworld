@@ -1,4 +1,4 @@
-﻿namespace Roboworld.Communication.WebApi.Controllers
+﻿namespace Roboworld.Gateway.WebApi.Controllers
 {
     using System.Net;
     using System.Web.Http;

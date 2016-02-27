@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.Communication.WebApi
+namespace Roboworld.Gateway.WebApi
 {
     using System.Reflection;
     using System.Web.Http;

@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.Communication.WebApi.Ioc
+namespace Roboworld.Gateway.WebApi.Ioc
 {
     using AutoMapper;
 
