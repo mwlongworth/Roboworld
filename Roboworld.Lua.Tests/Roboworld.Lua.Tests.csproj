@@ -65,8 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicLuaTest.cs" />
-    <Compile Include="EmbeddedResourceLoader.cs" />
-    <Compile Include="IResourceLoader.cs" />
     <Compile Include="LuaRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

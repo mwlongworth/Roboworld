@@ -4,14 +4,14 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.Lua.Tests
+namespace Roboworld.Lua
 {
     using System;
     using System.Globalization;
     using System.IO;
     using System.Reflection;
 
-    public class EmbeddedResourceLoader<T> : IResourceLoader
+    public class EmbeddedResourceLoader : IResourceLoader
     {
         private readonly Assembly assembly;
 
@@ -19,8 +19,8 @@ namespace Roboworld.Lua.Tests
 
         public EmbeddedResourceLoader()
         {
-            this.assembly = typeof(T).Assembly;
-            this.rootNamespace = typeof(T).Namespace;
+            this.assembly = Assembly.GetExecutingAssembly();
+            this.rootNamespace = typeof(EmbeddedResourceLoader).Namespace;
         }
 
         public string LoadResource(string name)

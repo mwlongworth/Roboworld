@@ -1,4 +1,4 @@
-namespace Roboworld.Lua.Tests
+namespace Roboworld.Lua
 {
     public interface IResourceLoader
     {
