@@ -15,7 +15,7 @@ namespace Roboworld.Lua.Tests
     [TestFixture]
     public class BasicLuaTest
     {
-        private readonly IResourceLoader loader = new EmbeddedResourceLoader();
+        private readonly ILuaRepository loader = new LuaRepository();
 
         [Test]
         public void Table_WhenTableReturned_IsValid()

@@ -10,6 +10,8 @@ namespace Roboworld.Lua
 
     public interface ILuaRepository
     {
-        Task<string> LuaScriptAsync(string name);
+        Task<string> LuaScriptAsync(string scriptName);
+
+        Task<string> LuaLibraryAsync(string libraryName);
     }
 }

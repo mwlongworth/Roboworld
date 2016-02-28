@@ -47,13 +47,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="serialization.lua" />
+    <EmbeddedResource Include="Library\serialization.lua" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="update.lua" />
+    <EmbeddedResource Include="Scripts\update.lua" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="bootstrap.lua" />
+    <EmbeddedResource Include="Scripts\bootstrap.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Library\webApiClient.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Library\softwareClient.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Library\files.lua" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,6 +6,8 @@
 
 namespace Roboworld.Gateway.WebApi.Controllers
 {
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Net;
     using System.Text;
@@ -33,9 +35,7 @@ namespace Roboworld.Gateway.WebApi.Controllers
         {
             // Get the bootstrapper - a single program that allows the rest of the software to be downloaded
             // This is done by gluing various files together
-            var files = new[] { "webApiClient", "softwareClient", "bootstrap" };
-
-            var allTasks = files.Select(o => this.luaRepository.LuaScriptAsync(o)).ToList();
+            var allTasks = this.GetAllFilesForBootstrap().ToList();
 
             await Task.WhenAll(allTasks);
             var completeFile = new StringBuilder();
@@ -55,23 +55,70 @@ namespace Roboworld.Gateway.WebApi.Controllers
             return this.Ok(completeFile.ToString());
         }
 
+        private IEnumerable<Task<string>> GetAllFilesForBootstrap()
+        {
+            yield return this.luaRepository.LuaLibraryAsync("webApiClient");
+            yield return this.luaRepository.LuaLibraryAsync("softwareClient");
+            yield return this.luaRepository.LuaLibraryAsync("serialization");
+            yield return this.luaRepository.LuaLibraryAsync("files");
+            yield return this.luaRepository.LuaScriptAsync("bootstrap");
+        }
+
         [HttpGet]
         [Route("update")]
         public IHttpActionResult GetAllUpdates()
         {
-            return this.Content(HttpStatusCode.OK, "{\"alpha\",\"beta\",\"gamma\"}");
+            var libraries = new[] { "webApiClient", "softwareClient", "serialization", "files", };
+            var table = GetValue(libraries);
+
+            return this.Ok(table);
+        }
+
+        private static string GetValue(IEnumerable<string> values)
+        {
+            var sb = new StringBuilder("{");
+            var addComma = false;
+            foreach (var value in values)
+            {
+                if (addComma)
+                {
+                    sb.Append(",");
+                }
+
+                sb.Append("\"");
+                sb.Append(value);
+                sb.Append("\"");
+                addComma = true;
+            }
+
+            sb.Append("}");
+            return sb.ToString();
+        }
+
+        [HttpGet]
+        [Route("script/{name}")]
+        public Task<IHttpActionResult> GetScript(string name)
+        {
+            return this.LuaLibrary(name);
         }
 
         [HttpGet]
         [Route("library/{name}")]
         public Task<IHttpActionResult> GetLibrary(string name)
         {
-            return this.Lua(name);
+            return this.LuaLibrary(name);
         }
 
-        private async Task<IHttpActionResult> Lua(string name)
+        private async Task<IHttpActionResult> LuaScript(string name)
         {
             var content = await this.luaRepository.LuaScriptAsync(name);
+
+            return this.Ok(content);
+        }
+
+        private async Task<IHttpActionResult> LuaLibrary(string name)
+        {
+            var content = await this.luaRepository.LuaLibraryAsync(name);
 
             return this.Ok(content);
         }

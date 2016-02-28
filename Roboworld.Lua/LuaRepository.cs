@@ -11,9 +11,16 @@ namespace Roboworld.Lua
 
     public class LuaRepository : ILuaRepository
     {
-        public Task<string> LuaScriptAsync(string name)
+        public Task<string> LuaScriptAsync(string scriptName)
         {
-            var fullName = string.Format(CultureInfo.InvariantCulture, "{0}.lua", name);
+            var fullName = string.Format(CultureInfo.InvariantCulture, "Scripts.{0}.lua", scriptName);
+            var loader = new EmbeddedResourceLoader();
+            return loader.LoadResourceAsync(fullName);
+        }
+
+        public Task<string> LuaLibraryAsync(string libraryName)
+        {
+            var fullName = string.Format(CultureInfo.InvariantCulture, "Library.{0}.lua", libraryName);
             var loader = new EmbeddedResourceLoader();
             return loader.LoadResourceAsync(fullName);
         }

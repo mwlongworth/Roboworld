@@ -8,22 +8,19 @@ namespace Roboworld.Lua.Tests
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
-
-    using Moq;
 
     using Neo.IronLua;
 
     public class LuaRunner
     {
-        private readonly IResourceLoader resourceLoader;
+        private readonly ILuaRepository repository;
 
         private readonly IList<string> content;
 
-        public LuaRunner(IResourceLoader resourceLoader)
+        public LuaRunner(ILuaRepository repository)
         {
-            this.resourceLoader = resourceLoader;
+            this.repository = repository;
             this.content = new List<string>();
         }
 
@@ -31,8 +28,7 @@ namespace Roboworld.Lua.Tests
         {
             foreach (var filename in filenames)
             {
-                var fullName = string.Format(CultureInfo.InvariantCulture, "{0}.lua", filename);
-                this.content.Add(this.resourceLoader.LoadResource(fullName));
+                this.content.Add(this.repository.LuaLibraryAsync(filename).Result);
             }
 
             return this;

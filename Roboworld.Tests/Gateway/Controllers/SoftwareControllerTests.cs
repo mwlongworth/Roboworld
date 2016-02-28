@@ -29,25 +29,34 @@ namespace Roboworld.Tests.Gateway.Controllers
         }
 
         [Test]
-        public async Task Bootstrap_WhenCalled_ShouldGetWebApiClientFile()
+        public async Task Bootstrap_WhenCalled_ShouldGetWebApiClientLibrary()
         {
             var sut = this.BuildDefaultSubjectUnderTest();
             await sut.GetBootstrapper();
 
-            this.mockLuaRepository.Verify(o => o.LuaScriptAsync("webApiClient"), Times.Once);
+            this.mockLuaRepository.Verify(o => o.LuaLibraryAsync("webApiClient"), Times.Once);
         }
 
         [Test]
-        public async Task Bootstrap_WhenCalled_ShouldGetSoftwareClientFile()
+        public async Task Bootstrap_WhenCalled_ShouldGetSoftwareClientLibrary()
         {
             var sut = this.BuildDefaultSubjectUnderTest();
             await sut.GetBootstrapper();
 
-            this.mockLuaRepository.Verify(o => o.LuaScriptAsync("softwareClient"), Times.Once);
+            this.mockLuaRepository.Verify(o => o.LuaLibraryAsync("softwareClient"), Times.Once);
         }
 
         [Test]
-        public async Task Bootstrap_WhenCalled_ShouldGetBootstrapFile()
+        public async Task Bootstrap_WhenCalled_ShouldGetSerializationLibrary()
+        {
+            var sut = this.BuildDefaultSubjectUnderTest();
+            await sut.GetBootstrapper();
+
+            this.mockLuaRepository.Verify(o => o.LuaLibraryAsync("serialization"), Times.Once);
+        }
+
+        [Test]
+        public async Task Bootstrap_WhenCalled_ShouldGetBootstrapScript()
         {
             var sut = this.BuildDefaultSubjectUnderTest();
             await sut.GetBootstrapper();
@@ -58,16 +67,18 @@ namespace Roboworld.Tests.Gateway.Controllers
         [Test]
         public async Task Bootstrap_WhenCalled_ShouldCombineFilesTogether()
         {
-            this.mockLuaRepository.Setup(o => o.LuaScriptAsync("webApiClient")).ReturnsAsync("a");
-            this.mockLuaRepository.Setup(o => o.LuaScriptAsync("softwareClient")).ReturnsAsync("b");
-            this.mockLuaRepository.Setup(o => o.LuaScriptAsync("bootstrap")).ReturnsAsync("c");
+            this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("webApiClient")).ReturnsAsync("a");
+            this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("softwareClient")).ReturnsAsync("b");
+            this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("serialization")).ReturnsAsync("c");
+            this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("files")).ReturnsAsync("d");
+            this.mockLuaRepository.Setup(o => o.LuaScriptAsync("bootstrap")).ReturnsAsync("e");
 
             var sut = this.BuildDefaultSubjectUnderTest();
             var result = (object)await sut.GetBootstrapper();
 
             var content = result.Should().BeOfType<OkNegotiatedContentResult<string>>().Subject.Content;
             content.Should().NotBeNull();
-            content.Should().Be("a\r\nb\r\nc");
+            content.Should().Be("a\r\nb\r\nc\r\nd\r\ne");
         }
 
         private SoftwareController BuildDefaultSubjectUnderTest()
