@@ -144,12 +144,14 @@
     <Compile Include="App_Start\SimpleInjectorConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="App_Start\TextPlainFormatter.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\RobotController.cs" />
-    <Compile Include="Controllers\UpdatesController.cs" />
+    <Compile Include="Controllers\SoftwareController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Ioc\LuaPackage.cs" />
     <Compile Include="Ioc\AutoMapperPackage.cs" />
     <Compile Include="Ioc\DtoMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,6 +170,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Roboworld.Lua\Roboworld.Lua.csproj">
+      <Project>{20265270-de59-4602-89ec-b9741a444a10}</Project>
+      <Name>Roboworld.Lua</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

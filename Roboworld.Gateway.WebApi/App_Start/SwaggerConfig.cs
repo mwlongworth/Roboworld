@@ -9,8 +9,10 @@ namespace Roboworld.Gateway.WebApi
     using System;
     using System.Net.Http;
     using System.Web.Http;
+    using System.Web.Http.Description;
 
     using Swashbuckle.Application;
+    using Swashbuckle.Swagger;
 
     public static class SwaggerConfig
     {
@@ -23,7 +25,16 @@ namespace Roboworld.Gateway.WebApi
               {
                   c.SingleApiVersion("v1", "Gateway Service API").Description(Description);
                   c.RootUrl(req => new Uri(req.RequestUri, req.GetRequestContext().VirtualPathRoot).ToString());
+                  c.OperationFilter<JeffFilter>();
               }).EnableSwaggerUi();
+        }
+    }
+
+    public class JeffFilter : IOperationFilter
+    {
+        public void Apply(Operation operation, SchemaRegistry schemaRegistry, ApiDescription apiDescription)
+        {
+            operation.produces.Add("text/plain");
         }
     }
 }

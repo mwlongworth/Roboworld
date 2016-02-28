@@ -10,6 +10,7 @@ namespace Roboworld.Lua
     using System.Globalization;
     using System.IO;
     using System.Reflection;
+    using System.Threading.Tasks;
 
     public class EmbeddedResourceLoader : IResourceLoader
     {
@@ -26,16 +27,44 @@ namespace Roboworld.Lua
         public string LoadResource(string name)
         {
             var fullName = string.Format(CultureInfo.InvariantCulture, "{0}.{1}", this.rootNamespace, name);
-            var stream = this.assembly.GetManifestResourceStream(fullName);
-
-            if (stream == null)
+            using (var stream = this.assembly.GetManifestResourceStream(fullName))
             {
-                throw new InvalidOperationException("No such file");
+                if (stream == null)
+                {
+                    var msg = string.Format(
+                        CultureInfo.InvariantCulture,
+                        "Unable to load '{0}' from the assembly {1}",
+                        fullName,
+                        this.assembly.FullName);
+                    throw new InvalidOperationException(msg);
+                }
+
+                using (var reader = new StreamReader(stream))
+                {
+                    return reader.ReadToEnd();
+                }
             }
+        }
 
-            using (var reader = new StreamReader(stream))
+        public Task<string> LoadResourceAsync(string name)
+        {
+            var fullName = string.Format(CultureInfo.InvariantCulture, "{0}.{1}", this.rootNamespace, name);
+            using (var stream = this.assembly.GetManifestResourceStream(fullName))
             {
-                return reader.ReadToEnd();
+                if (stream == null)
+                {
+                    var msg = string.Format(
+                        CultureInfo.InvariantCulture,
+                        "Unable to load '{0}' from the assembly {1}",
+                        fullName,
+                        this.assembly.FullName);
+                    throw new InvalidOperationException(msg);
+                }
+
+                using (var reader = new StreamReader(stream))
+                {
+                    return reader.ReadToEndAsync();
+                }
             }
         }
     }

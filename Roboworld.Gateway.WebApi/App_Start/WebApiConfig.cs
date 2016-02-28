@@ -21,6 +21,8 @@ namespace Roboworld.Gateway.WebApi
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            config.Formatters.Add(new TextPlainFormatter());
         }
     }
 }

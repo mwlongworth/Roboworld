@@ -1,0 +1,7 @@
+﻿print("Updater version 2")
+f=fs.open("update","w")
+h=http.get("http://localhost/Roboworld.Gateway.WebApi/updates/library/update",{Accept="text/plain"})
+f.write(h.readAll()) 
+f.close()
+h.close()
+print("Update complete!")

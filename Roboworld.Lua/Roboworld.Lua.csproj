@@ -41,11 +41,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmbeddedResourceLoader.cs" />
+    <Compile Include="ILuaRepository.cs" />
     <Compile Include="IResourceLoader.cs" />
+    <Compile Include="LuaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="serialization.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="update.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="bootstrap.lua" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
