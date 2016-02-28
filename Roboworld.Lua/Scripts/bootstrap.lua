@@ -1,13 +1,13 @@
 ﻿baseUrl = "http://localhost/Roboworld.Gateway.WebApi/software/"
+print("Boostrapper V1.1")
+print("----------------")
 
 local files = getFilesToUpdate(baseUrl)
-print("start")
-print(files.length)
 for k, v in ipairs(files) do
     local fileUrl = "library/"..v
-    print("Downloading update for [" .. v .. "] from ["..fileUrl.."]")
-    
+    local filename = "lib/"..v
     local content = httpGetPlainText(baseUrl..fileUrl)
-    saveToDisk("lib/"..v,content)
+    saveToDisk(filename,content)
+    print(" - saved '" .. filename .. "'")
 end
-print("done")
+print("All software downloaded")
