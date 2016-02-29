@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="LibraryTests.cs" />
     <Compile Include="BasicLuaTest.cs" />
+    <Compile Include="LuaConvertTests.cs" />
     <Compile Include="LuaRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

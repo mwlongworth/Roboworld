@@ -7,13 +7,14 @@
 namespace Roboworld.Gateway.WebApi.Controllers
 {
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
-    using System.Net;
     using System.Text;
     using System.Threading.Tasks;
     using System.Web.Http;
 
+    using Newtonsoft.Json;
+
+    using Roboworld.Gateway.WebApi.Dtos;
     using Roboworld.Lua;
 
     /// <summary>
@@ -69,30 +70,27 @@ namespace Roboworld.Gateway.WebApi.Controllers
         public IHttpActionResult GetAllUpdates()
         {
             var libraries = new[] { "webApiClient", "softwareClient", "serialization", "files", };
-            var table = GetValue(libraries);
-
-            return this.Ok(table);
+            return this.Ok(LuaConvert.SerializeObject(libraries));
         }
 
-        private static string GetValue(IEnumerable<string> values)
+        [HttpGet]
+        [Route("update2")]
+        public IHttpActionResult GetAllUpdates2()
         {
-            var sb = new StringBuilder("{");
-            var addComma = false;
-            foreach (var value in values)
-            {
-                if (addComma)
-                {
-                    sb.Append(",");
-                }
+            var all = new UpdatableSoftware
+                          {
+                              Libraries =
+                                  new[]
+                                      {
+                                          new VersionedFile("webApiClient", 1, 0, 0),
+                                          new VersionedFile("softwareClient", 1, 0, 0),
+                                          new VersionedFile("serialization", 1, 0, 0),
+                                          new VersionedFile("files", 1, 0, 0)
+                                      },
+                              Scripts = new[] { new VersionedFile("Bootstrap", 1, 1, 1), }
+                          };
 
-                sb.Append("\"");
-                sb.Append(value);
-                sb.Append("\"");
-                addComma = true;
-            }
-
-            sb.Append("}");
-            return sb.ToString();
+            return this.Ok(LuaConvert.SerializeObject(all));
         }
 
         [HttpGet]

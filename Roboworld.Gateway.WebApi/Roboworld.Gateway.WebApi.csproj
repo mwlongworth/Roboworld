@@ -148,6 +148,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\RobotController.cs" />
     <Compile Include="Controllers\SoftwareController.cs" />
+    <Compile Include="Dtos\UpdatableSoftware.cs" />
+    <Compile Include="Dtos\VersionedFile.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

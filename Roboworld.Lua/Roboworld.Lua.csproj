@@ -43,6 +43,7 @@
     <Compile Include="EmbeddedResourceLoader.cs" />
     <Compile Include="ILuaRepository.cs" />
     <Compile Include="IResourceLoader.cs" />
+    <Compile Include="LuaConvert.cs" />
     <Compile Include="LuaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
