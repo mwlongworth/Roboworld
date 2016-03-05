@@ -1,0 +1,1 @@
+﻿print("Robot main loop V0.1")

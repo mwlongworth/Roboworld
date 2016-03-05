@@ -69,14 +69,6 @@ namespace Roboworld.Gateway.WebApi.Controllers
         [Route("update")]
         public IHttpActionResult GetAllUpdates()
         {
-            var libraries = new[] { "webApiClient", "softwareClient", "serialization", "files", };
-            return this.Ok(LuaConvert.SerializeObject(libraries));
-        }
-
-        [HttpGet]
-        [Route("update2")]
-        public IHttpActionResult GetAllUpdates2()
-        {
             var all = new UpdatableSoftware
                           {
                               Libraries =
@@ -87,17 +79,15 @@ namespace Roboworld.Gateway.WebApi.Controllers
                                           new VersionedFile("serialization", 1, 0, 0),
                                           new VersionedFile("files", 1, 0, 0)
                                       },
-                              Scripts = new[] { new VersionedFile("Bootstrap", 1, 1, 1), }
+                              Scripts =
+                                  new[]
+                                      {
+                                          new VersionedFile("computer", 1, 0, 0),
+                                          new VersionedFile("robot", 1, 0, 0),
+                                      }
                           };
 
             return this.Ok(LuaConvert.SerializeObject(all));
-        }
-
-        [HttpGet]
-        [Route("script/{name}")]
-        public Task<IHttpActionResult> GetScript(string name)
-        {
-            return this.LuaLibrary(name);
         }
 
         [HttpGet]
@@ -107,16 +97,23 @@ namespace Roboworld.Gateway.WebApi.Controllers
             return this.LuaLibrary(name);
         }
 
-        private async Task<IHttpActionResult> LuaScript(string name)
+        [HttpGet]
+        [Route("script/{name}")]
+        public Task<IHttpActionResult> GetScript(string name)
         {
-            var content = await this.luaRepository.LuaScriptAsync(name);
-
-            return this.Ok(content);
+            return this.LuaScript(name);
         }
 
         private async Task<IHttpActionResult> LuaLibrary(string name)
         {
             var content = await this.luaRepository.LuaLibraryAsync(name);
+
+            return this.Ok(content);
+        }
+
+        private async Task<IHttpActionResult> LuaScript(string name)
+        {
+            var content = await this.luaRepository.LuaScriptAsync(name);
 
             return this.Ok(content);
         }

@@ -1,21 +1,20 @@
 ﻿baseUrl = "http://localhost/Roboworld.Gateway.WebApi/software/"
-print("Bootstrapper V1.1")
-print("----------------")
+print("Bootstrapper V1.2")
+print("-----------------")
 
 local files = getFilesToUpdate(baseUrl)
-for k, v in ipairs(files) do
-    local fileUrl = "library/" .. v
-    local filename = "lib/" .. v
+for k, v in ipairs(files.Libraries) do
+    local fileUrl = "library/" .. v.Name
+    local filename = "lib/" .. v.Name
     local content = httpGetPlainText(baseUrl .. fileUrl)
     saveToDisk(filename, content)
     print(" - saved '" .. filename .. "'")
 end
-print("All software downloaded")
-local files = getSoftwareToUpdate(baseUrl)
-for k, v in ipairs(files.Libraries) do
-    print(" = Lib " .. v.Name .. " - " .. v.Version .. "'")
-end
 for k, v in ipairs(files.Scripts) do
-    print(" = Script " .. v.Name .. " - " .. v.Version .. "'")
+    local fileUrl = "script/" .. v.Name
+    local filename = v.Name
+    local content = httpGetPlainText(baseUrl .. fileUrl)
+    saveToDisk(filename, content)
+    print(" - saved '" .. filename .. "'")
 end
 print("All software downloaded")

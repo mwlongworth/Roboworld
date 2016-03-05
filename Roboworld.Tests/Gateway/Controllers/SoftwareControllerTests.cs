@@ -81,6 +81,27 @@ namespace Roboworld.Tests.Gateway.Controllers
             content.Should().Be("a\r\nb\r\nc\r\nd\r\ne");
         }
 
+        [Test]
+        public async Task GetLibrary_WhenCalled_ThenShouldLoadCorrectScript()
+        {
+            var fileId = "aaa";
+            var sut = this.BuildDefaultSubjectUnderTest();
+            await sut.GetLibrary(fileId);
+
+            this.mockLuaRepository.Verify(o => o.LuaLibraryAsync(fileId), Times.Once);
+        }
+
+        [Test]
+        public async Task GetScript_WhenCalled_ThenShouldLoadCorrectScript()
+        {
+            var fileId = "aaa";
+            var sut = this.BuildDefaultSubjectUnderTest();
+            await sut.GetScript(fileId);
+
+            this.mockLuaRepository.Verify(o => o.LuaScriptAsync(fileId), Times.Once);
+        }
+
+
         private SoftwareController BuildDefaultSubjectUnderTest()
         {
             return new SoftwareController(this.mockLuaRepository.Object);
