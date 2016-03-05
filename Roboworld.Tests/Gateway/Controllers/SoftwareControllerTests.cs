@@ -34,7 +34,7 @@ namespace Roboworld.Tests.Gateway.Controllers
             var sut = this.BuildDefaultSubjectUnderTest();
             await sut.GetBootstrapper();
 
-            this.mockLuaRepository.Verify(o => o.LuaLibraryAsync("webApiClient"), Times.Once);
+            this.mockLuaRepository.Verify(o => o.LuaLibraryAsync("web"), Times.Once);
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Roboworld.Tests.Gateway.Controllers
             var sut = this.BuildDefaultSubjectUnderTest();
             await sut.GetBootstrapper();
 
-            this.mockLuaRepository.Verify(o => o.LuaLibraryAsync("softwareClient"), Times.Once);
+            this.mockLuaRepository.Verify(o => o.LuaLibraryAsync("software"), Times.Once);
         }
 
         [Test]
@@ -67,8 +67,8 @@ namespace Roboworld.Tests.Gateway.Controllers
         [Test]
         public async Task Bootstrap_WhenCalled_ShouldCombineFilesTogether()
         {
-            this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("webApiClient")).ReturnsAsync("a");
-            this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("softwareClient")).ReturnsAsync("b");
+            this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("web")).ReturnsAsync("a");
+            this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("software")).ReturnsAsync("b");
             this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("serialization")).ReturnsAsync("c");
             this.mockLuaRepository.Setup(o => o.LuaLibraryAsync("files")).ReturnsAsync("d");
             this.mockLuaRepository.Setup(o => o.LuaScriptAsync("bootstrap")).ReturnsAsync("e");

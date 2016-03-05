@@ -6,14 +6,14 @@ local files = getFilesToUpdate(baseUrl)
 for k, v in ipairs(files.Libraries) do
     local fileUrl = "library/" .. v.Name
     local filename = "lib/" .. v.Name
-    local content = httpGetPlainText(baseUrl .. fileUrl)
+    local content = getText(baseUrl .. fileUrl)
     saveToDisk(filename, content)
     print(" - saved '" .. filename .. "'")
 end
 for k, v in ipairs(files.Scripts) do
     local fileUrl = "script/" .. v.Name
     local filename = v.Name
-    local content = httpGetPlainText(baseUrl .. fileUrl)
+    local content = getText(baseUrl .. fileUrl)
     saveToDisk(filename, content)
     print(" - saved '" .. filename .. "'")
 end

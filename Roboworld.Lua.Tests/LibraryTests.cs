@@ -15,8 +15,8 @@ namespace Roboworld.Lua.Tests
     {
         private readonly ILuaRepository repository = new LuaRepository();
 
-        [TestCase("webApiClient")]
-        [TestCase("softwareClient")]
+        [TestCase("web")]
+        [TestCase("software")]
         [TestCase("serialization")]
         [TestCase("files")]
         public void Library_WhenLoadedFromAssembly_ShouldBeValidLua(string libraryName)

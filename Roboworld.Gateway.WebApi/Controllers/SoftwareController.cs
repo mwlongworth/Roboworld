@@ -58,8 +58,8 @@ namespace Roboworld.Gateway.WebApi.Controllers
 
         private IEnumerable<Task<string>> GetAllFilesForBootstrap()
         {
-            yield return this.luaRepository.LuaLibraryAsync("webApiClient");
-            yield return this.luaRepository.LuaLibraryAsync("softwareClient");
+            yield return this.luaRepository.LuaLibraryAsync("web");
+            yield return this.luaRepository.LuaLibraryAsync("software");
             yield return this.luaRepository.LuaLibraryAsync("serialization");
             yield return this.luaRepository.LuaLibraryAsync("files");
             yield return this.luaRepository.LuaScriptAsync("bootstrap");
@@ -74,8 +74,8 @@ namespace Roboworld.Gateway.WebApi.Controllers
                               Libraries =
                                   new[]
                                       {
-                                          new VersionedFile("webApiClient", 1, 0, 0),
-                                          new VersionedFile("softwareClient", 1, 0, 0),
+                                          new VersionedFile("web", 1, 0, 0),
+                                          new VersionedFile("software", 1, 0, 0),
                                           new VersionedFile("serialization", 1, 0, 0),
                                           new VersionedFile("files", 1, 0, 0)
                                       },

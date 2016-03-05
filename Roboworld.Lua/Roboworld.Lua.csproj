@@ -57,10 +57,10 @@
     <EmbeddedResource Include="Scripts\bootstrap.lua" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Library\webApiClient.lua" />
+    <EmbeddedResource Include="Library\web.lua" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Library\softwareClient.lua" />
+    <EmbeddedResource Include="Library\software.lua" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Library\files.lua" />
