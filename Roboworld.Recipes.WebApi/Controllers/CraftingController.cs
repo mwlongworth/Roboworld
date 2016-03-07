@@ -10,6 +10,7 @@ namespace Roboworld.Recipes.WebApi.Controllers
 
     using NHibernate;
 
+    using Roboworld.Recipes.WebApi.Dto;
     using Roboworld.Recipes.WebApi.Orm;
 
     [RoutePrefix("crafting")]
@@ -20,6 +21,13 @@ namespace Roboworld.Recipes.WebApi.Controllers
         public CraftingController(ISession session)
         {
             this.session = session;
+        }
+
+        [HttpPost]
+        [Route("mods/{modId}/items/{itemName}/recipes")]
+        public IHttpActionResult Set(string modId, string version, string itemName, PostCraftingRecipeRequest request)
+        {
+            return this.Ok(session.QueryOver<CraftingRecipe>().List());
         }
 
         [HttpGet]

@@ -1,12 +1,12 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="RecipeContent.cs" company="Matthew Longworth">
+// <copyright file="RecipeIngredient.cs" company="Matthew Longworth">
 //   (c) Matthew Longworth 2016
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Roboworld.Recipes.WebApi.Orm
 {
-    public class RecipeContent
+    public class RecipeIngredient
     {
         public virtual int Id { get; set; }
 

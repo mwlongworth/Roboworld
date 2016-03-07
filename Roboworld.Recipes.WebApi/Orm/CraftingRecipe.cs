@@ -12,7 +12,15 @@ namespace Roboworld.Recipes.WebApi.Orm
     {
         public virtual int Id { get; set; }
 
-        public virtual IList<RecipeContent> Contents { get; set; }
+        public virtual Mod Mod { get; set; }
+
+        public virtual CraftingProcess Process { get; set; }
+
+        public virtual Item Output { get; set; }
+
+        public virtual int Quantity { get; set; }
+
+        public virtual IList<RecipeIngredient> Ingredients { get; set; }
 
         public virtual bool Deleted { get; set; }
     }
