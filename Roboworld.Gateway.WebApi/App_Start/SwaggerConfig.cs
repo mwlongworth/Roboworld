@@ -21,15 +21,20 @@ namespace Roboworld.Gateway.WebApi
 
         public static void Register(HttpConfiguration config)
         {
+            var assembly = Assembly.GetExecutingAssembly();
             config.EnableSwagger(
                 c =>
                     {
                         c.SingleApiVersion("v1", "Gateway Service API").Description(Description);
                         c.RootUrl(req => new Uri(req.RequestUri, req.GetRequestContext().VirtualPathRoot).ToString());
                         c.OperationFilter<JeffFilter>();
-                    })
-                .EnableSwaggerUi(
-                    c => c.InjectStylesheet(Assembly.GetExecutingAssembly(), "Roboworld.Gateway.WebApi.SwaggerUi.css"));
+                    }).EnableSwaggerUi(
+                        c =>
+                            {
+                                c.InjectStylesheet(assembly, "Roboworld.Gateway.WebApi.Swagger.SwaggerUi.css");
+                                c.CustomAsset("images/favicon-16x16-png", assembly, "Roboworld.Gateway.WebApi.Swagger.favicon-16x16-png");
+                                c.CustomAsset("images/favicon-32x32-png", assembly, "Roboworld.Gateway.WebApi.Swagger.favicon-32x32-png");
+                            });
         }
     }
 

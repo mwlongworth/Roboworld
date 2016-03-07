@@ -139,7 +139,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <EmbeddedResource Include="SwaggerUi.css" />
+    <EmbeddedResource Include="Swagger\SwaggerUi.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +164,8 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="Swagger\favicon-16x16-png" />
+    <EmbeddedResource Include="Swagger\favicon-32x32-png" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

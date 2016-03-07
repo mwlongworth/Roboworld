@@ -23,7 +23,7 @@ namespace Roboworld.Gateway.WebApi.Controllers
         [Route("command")]
         public IHttpActionResult GetCommand()
         {
-            return this.Content(HttpStatusCode.OK, "p");
+            return this.Content(HttpStatusCode.OK, "Yes, it is working");
         }
 
         [HttpPost]

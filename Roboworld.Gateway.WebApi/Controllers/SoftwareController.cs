@@ -77,7 +77,8 @@ namespace Roboworld.Gateway.WebApi.Controllers
                                           new VersionedFile("web", 1, 0, 0),
                                           new VersionedFile("software", 1, 0, 0),
                                           new VersionedFile("serialization", 1, 0, 0),
-                                          new VersionedFile("files", 1, 0, 0)
+                                          new VersionedFile("files", 1, 0, 0),
+                                          new VersionedFile("gateway", 1, 0, 0)
                                       },
                               Scripts =
                                   new[]

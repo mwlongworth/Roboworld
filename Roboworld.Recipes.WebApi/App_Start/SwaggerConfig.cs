@@ -8,6 +8,7 @@ namespace Roboworld.Recipes.WebApi
 {
     using System;
     using System.Net.Http;
+    using System.Reflection;
     using System.Web.Http;
 
     using Swashbuckle.Application;
@@ -18,12 +19,19 @@ namespace Roboworld.Recipes.WebApi
 
         public static void Register(HttpConfiguration config)
         {
+            var assembly = Assembly.GetExecutingAssembly();
             config.EnableSwagger(
               c =>
               {
-                  c.SingleApiVersion("v1", "Resource Service API").Description(Description);
+                  c.SingleApiVersion("v1", "Recipes Service API").Description(Description);
                   c.RootUrl(req => new Uri(req.RequestUri, req.GetRequestContext().VirtualPathRoot).ToString());
-              }).EnableSwaggerUi();
+              }).EnableSwaggerUi(
+                        c =>
+                        {
+                            c.InjectStylesheet(assembly, "Roboworld.Recipes.WebApi.Swagger.SwaggerUi.css");
+                            c.CustomAsset("images/favicon-16x16-png", assembly, "Roboworld.Recipes.WebApi.Swagger.favicon-16x16-png");
+                            c.CustomAsset("images/favicon-32x32-png", assembly, "Roboworld.Recipes.WebApi.Swagger.favicon-32x32-png");
+                        });
         }
     }
 }
