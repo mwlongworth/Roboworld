@@ -1,0 +1,25 @@
+﻿@model Roboworld.WebApp.Models.SimpleUploadViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+        <form method="post" action="@Url.Action("Index", "Home")" enctype="multipart/form-data">
+            UPLOAD FILE
+            <br/>
+            <input type="file" name="@Html.NameFor(o=> o.File)" />
+            <br />
+            <input type="submit" value="Submit the form" />
+        </form>
+
+<div>
+
+</div>
+</body>
+</html>

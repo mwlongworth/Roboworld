@@ -1,7 +1,12 @@
-﻿namespace Roboworld.Recipes.WebApi.Controllers
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ModsController.cs" company="Matthew Longworth">
+//   (c) Matthew Longworth 2016
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Roboworld.Recipes.WebApi.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
 
