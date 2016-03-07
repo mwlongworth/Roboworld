@@ -20,7 +20,7 @@ namespace Roboworld.Recipes.WebApi.Orm
 
         public virtual int Quantity { get; set; }
 
-        public virtual IList<RecipeIngredient> Ingredients { get; set; }
+        public virtual IList<CraftingRecipeIngredient> Ingredients { get; set; }
 
         public virtual bool Deleted { get; set; }
     }

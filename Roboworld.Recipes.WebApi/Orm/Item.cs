@@ -10,9 +10,11 @@ namespace Roboworld.Recipes.WebApi.Orm
     {
         public virtual int Id { get; set; }
 
+        public virtual string Slug { get; set; }
+
         public virtual string Name { get; set; }
 
-        public virtual int Mod { get; set; }
+        public virtual Mod Mod { get; set; }
 
         public virtual bool Deleted { get; set; }
     }

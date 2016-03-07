@@ -12,19 +12,10 @@ namespace Roboworld.Recipes.WebApi.Dto
     {
         public string Process { get; set; }
 
-        public IReadOnlyList<Ingredient> Ingredients { get; set; }
+        public IReadOnlyList<CraftingRecipeIngredient> Ingredients { get; set; }
 
         public int Quantity { get; set; }
 
         public IReadOnlyList<int> Shape { get; set; }
-    }
-
-    public class Ingredient
-    {
-        public string ItemName { get; set; }
-
-        public int Quantity { get; set; }
-
-        public bool Catalyst { get; set; }
     }
 }
