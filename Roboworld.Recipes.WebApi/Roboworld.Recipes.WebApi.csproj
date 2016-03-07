@@ -159,6 +159,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CraftingController.cs" />
+    <Compile Include="Controllers\ModsController.cs" />
     <Compile Include="Dto\CraftingRecipeIngredient.cs" />
     <Compile Include="Dto\PostCraftingRecipeRequest.cs" />
     <Compile Include="Dto\CreateItemDto.cs" />

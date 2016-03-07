@@ -76,5 +76,14 @@ namespace Roboworld.Recipes.WebApi.Controllers
         {
             return this.Ok(this.session.QueryOver<Item>().Where(o => o.Id == id).SingleOrDefault());
         }
+
+        [HttpGet]
+        [Route("{itemId}/recipes")]
+        public IHttpActionResult GetAllRecipes(int itemId)
+        {
+            var craftingRecipes = this.session.QueryOver<CraftingRecipe>().Where(o => o.Output.Id == itemId).List();
+
+            return this.Ok(craftingRecipes);
+        }
     }
 }
