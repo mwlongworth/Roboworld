@@ -9,6 +9,9 @@ namespace Roboworld.WebApp.Controllers
     using System.IO;
     using System.Web.Mvc;
 
+    using Newtonsoft.Json;
+
+    using Roboworld.RecipeImporter;
     using Roboworld.WebApp.Models;
 
     public class HomeController : Controller
@@ -23,13 +26,17 @@ namespace Roboworld.WebApp.Controllers
         public ActionResult Index(SimpleUploadViewModel model)
         {
             var file = model.File;
-            string txt = null;
-            using (var reader = new StreamReader(file.InputStream))
+            string json = null;
+
+            using (var archive = new ArchiveReader(file.InputStream))
             {
-                txt = reader.ReadToEndAsync().Result;
+                var neiImporter = new NeiImporter(archive);
+                var items = neiImporter.GetAllItems();
+                var variants = neiImporter.GetAllItemVariants();
+                json = JsonConvert.SerializeObject(variants);
             }
 
-            return this.Content(txt);
+            return this.Content(json);
         }
     }
 }

@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{4694
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roboworld.WebApp", "Roboworld.WebApp\Roboworld.WebApp.csproj", "{28601561-A040-4889-9027-CEC4B7BB9CAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roboworld.RecipeImporter", "Roboworld.RecipeImporter\Roboworld.RecipeImporter.csproj", "{B5D67994-CE98-47A7-8E9E-F86D5E0ADFC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{28601561-A040-4889-9027-CEC4B7BB9CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28601561-A040-4889-9027-CEC4B7BB9CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28601561-A040-4889-9027-CEC4B7BB9CAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D67994-CE98-47A7-8E9E-F86D5E0ADFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D67994-CE98-47A7-8E9E-F86D5E0ADFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D67994-CE98-47A7-8E9E-F86D5E0ADFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D67994-CE98-47A7-8E9E-F86D5E0ADFC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,5 +84,6 @@ Global
 		{5452F8E0-27C3-426C-A750-5EEE22A65211} = {CAD9F10F-39CC-4A40-A4F5-203CE389E615}
 		{CC354952-D0F4-4437-BECA-80C8C4BA8D09} = {ABE763D7-4260-49FD-AA5E-0135ADBAC1F5}
 		{28601561-A040-4889-9027-CEC4B7BB9CAB} = {469443A9-4701-48AA-B4F0-0705C2F6F348}
+		{B5D67994-CE98-47A7-8E9E-F86D5E0ADFC7} = {ABE763D7-4260-49FD-AA5E-0135ADBAC1F5}
 	EndGlobalSection
 EndGlobal
