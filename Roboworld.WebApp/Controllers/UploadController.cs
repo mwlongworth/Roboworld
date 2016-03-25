@@ -7,6 +7,7 @@
 namespace Roboworld.WebApp.Controllers
 {
     using System;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
 
     using Newtonsoft.Json;
@@ -33,7 +34,7 @@ namespace Roboworld.WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(SimpleUploadViewModel model)
+        public async Task<ActionResult> Index(SimpleUploadViewModel model)
         {
             if (model.File == null)
             {
@@ -50,6 +51,9 @@ namespace Roboworld.WebApp.Controllers
                 var items = neiImporter.GetAllItems();
                 var variants = neiImporter.GetAllItemVariants();
                 json = JsonConvert.SerializeObject(variants);
+
+                await this.neiUploader.UploadItemsAsync(items);
+                await this.neiUploader.UploadVariantsAsync(variants);
             }
 
             return this.Content(json);

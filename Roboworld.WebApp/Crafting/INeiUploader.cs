@@ -6,7 +6,15 @@
 
 namespace Roboworld.WebApp.Crafting
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Roboworld.RecipeImporter;
+
     public interface INeiUploader
     {
+        Task UploadItemsAsync(IReadOnlyList<NeiItem> items);
+
+        Task UploadVariantsAsync(IReadOnlyList<NeiItemVariant> variants);
     }
 }
