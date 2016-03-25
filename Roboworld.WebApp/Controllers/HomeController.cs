@@ -21,22 +21,5 @@ namespace Roboworld.WebApp.Controllers
         {
             return this.View();
         }
-
-        [HttpPost]
-        public ActionResult Index(SimpleUploadViewModel model)
-        {
-            var file = model.File;
-            string json = null;
-
-            using (var archive = new ArchiveReader(file.InputStream))
-            {
-                var neiImporter = new NeiImporter(archive);
-                var items = neiImporter.GetAllItems();
-                var variants = neiImporter.GetAllItemVariants();
-                json = JsonConvert.SerializeObject(variants);
-            }
-
-            return this.Content(json);
-        }
     }
 }
