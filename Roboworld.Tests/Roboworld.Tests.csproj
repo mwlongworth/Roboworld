@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentAssertions, Version=4.2.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.2.2\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
@@ -82,6 +86,8 @@
       <DependentUpon>VanillaMinecraftRecipes.feature</DependentUpon>
     </Compile>
     <Compile Include="RecipeImporter\ArchiveReaderTest.cs" />
+    <Compile Include="Testing\AutoMapperTester.cs" />
+    <Compile Include="WebApp\Automapper\NeiUploaderProfileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -100,9 +106,17 @@
       <Project>{20265270-DE59-4602-89EC-B9741A444A10}</Project>
       <Name>Roboworld.Lua</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Roboworld.RecipeImporter\Roboworld.RecipeImporter.csproj">
+      <Project>{B5D67994-CE98-47A7-8E9E-F86D5E0ADFC7}</Project>
+      <Name>Roboworld.RecipeImporter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Roboworld.Recipes.WebApi\Roboworld.Recipes.WebApi.csproj">
       <Project>{8d654058-51ec-4e25-a024-acd582f83b02}</Project>
       <Name>Roboworld.Recipes.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Roboworld.WebApp\Roboworld.WebApp.csproj">
+      <Project>{28601561-A040-4889-9027-CEC4B7BB9CAB}</Project>
+      <Name>Roboworld.WebApp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

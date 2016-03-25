@@ -13,13 +13,13 @@ namespace Roboworld.RecipeImporter
     {
         public string Mod { get; set; }
 
-        public string ItemName { get; set; }
+        public string Name { get; set; }
 
         public int ItemId { get; set; }
 
         protected bool Equals(NeiItem other)
         {
-            return string.Equals(this.Mod, other.Mod) && string.Equals(this.ItemName, other.ItemName) && this.ItemId == other.ItemId;
+            return string.Equals(this.Mod, other.Mod) && string.Equals(this.Name, other.Name) && this.ItemId == other.ItemId;
         }
 
         public override bool Equals(object obj)
@@ -44,7 +44,7 @@ namespace Roboworld.RecipeImporter
             unchecked
             {
                 var hashCode = (this.Mod != null ? this.Mod.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (this.ItemName != null ? this.ItemName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (this.Name != null ? this.Name.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ this.ItemId;
                 return hashCode;
             }

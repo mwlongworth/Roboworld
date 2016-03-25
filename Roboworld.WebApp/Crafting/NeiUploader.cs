@@ -41,8 +41,8 @@ namespace Roboworld.WebApp.Crafting
         {
             foreach (var neiVariant in variants)
             {
-                var variant = this.mapper.Map<Item>(neiVariant);
-                await this.craftingServiceClient.PutItemAsync(variant);
+                var variant = this.mapper.Map<ItemVariant>(neiVariant);
+                await this.craftingServiceClient.PutItemVariantAsync(variant);
             }
         }
     }

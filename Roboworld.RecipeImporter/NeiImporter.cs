@@ -35,7 +35,7 @@ namespace Roboworld.RecipeImporter
                     var row = csv.CurrentRecord;
                     var name = row[0].Split(':');
                     var itemId = int.Parse(row[1]);
-                    var item = new NeiItem { Mod = name[0], ItemName = name[1], ItemId = itemId };
+                    var item = new NeiItem { Mod = name[0], Name = name[1], ItemId = itemId };
                     items.Add(item);
                 }
             }
@@ -61,7 +61,7 @@ namespace Roboworld.RecipeImporter
                     var itemId = int.Parse(row[1]);
                     var metadata = int.Parse(row[2]);
 
-                    var key = new NeiItem { Mod = name[0], ItemName = name[1], ItemId = itemId };
+                    var key = new NeiItem { Mod = name[0], Name = name[1], ItemId = itemId };
                     if (!this.allItems.Contains(key))
                     {
                         var msg = string.Format(
