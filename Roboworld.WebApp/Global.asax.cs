@@ -22,6 +22,7 @@ namespace Roboworld.WebApp
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);            
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            SimpleInjectorConfig.Register();
         }
     }
 }

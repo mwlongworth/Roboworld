@@ -6,15 +6,26 @@
 
 namespace Roboworld.WebApp.Controllers
 {
+    using System;
     using System.Web.Mvc;
 
     using Newtonsoft.Json;
 
     using Roboworld.RecipeImporter;
+    using Roboworld.WebApp.Crafting;
     using Roboworld.WebApp.Models;
 
     public class UploadController : Controller
     {
+        private readonly INeiUploader neiUploader;
+
+        public UploadController(INeiUploader neiUploader)
+        {
+            if (neiUploader == null) throw new ArgumentNullException(nameof(neiUploader));
+
+            this.neiUploader = neiUploader;
+        }
+
         [HttpGet]
         public ActionResult Index()
         {

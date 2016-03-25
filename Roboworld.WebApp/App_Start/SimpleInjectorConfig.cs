@@ -4,28 +4,28 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.Recipes.WebApi
+namespace Roboworld.WebApp
 {
     using System.Reflection;
-    using System.Web.Http;
+    using System.Web.Mvc;
 
     using SimpleInjector;
-    using SimpleInjector.Integration.WebApi;
+    using SimpleInjector.Integration.Web;
+    using SimpleInjector.Integration.Web.Mvc;
 
     public static class SimpleInjectorConfig
     {
-        public static void Register(HttpConfiguration config)
+        public static void Register()
         {
             var container = new Container();
-            container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
+            container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
-            container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
+            container.RegisterMvcControllers();
             container.RegisterPackages(new[] { Assembly.GetExecutingAssembly() });
 
             container.Verify();
 
-            config.DependencyResolver =
-                new SimpleInjectorWebApiDependencyResolver(container);
+            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
     }
 }
