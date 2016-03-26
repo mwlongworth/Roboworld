@@ -7,7 +7,9 @@
 namespace Roboworld.WebApp.Crafting
 {
     using System;
+    using System.Globalization;
     using System.Net.Http;
+    using System.Net.Http.Formatting;
     using System.Threading.Tasks;
 
     public class CraftingServiceClient : ICraftingServiceClient
@@ -21,14 +23,29 @@ namespace Roboworld.WebApp.Crafting
             this.httpClient = httpClient;
         }
 
-        public Task PutItemAsync(Item item)
+        public async Task PutItemAsync(Item item)
         {
-            return Task.FromResult(0);
+            var path = string.Format(
+                CultureInfo.InvariantCulture,
+                "http://localhost/Roboworld.Recipes.WebApi/items/{0}/{1}",
+                item.Mod,
+                item.Name);
+
+            var uri = new Uri(path);
+
+            var obj = new PutItemRequest();
+            var content = new ObjectContent<PutItemRequest>(obj, new JsonMediaTypeFormatter());
+            await this.httpClient.PutAsync(uri, content);
         }
 
         public Task PutItemVariantAsync(ItemVariant item)
         {
             return Task.FromResult(0);
         }
+    }
+
+    public class PutItemRequest
+    {
+        
     }
 }
