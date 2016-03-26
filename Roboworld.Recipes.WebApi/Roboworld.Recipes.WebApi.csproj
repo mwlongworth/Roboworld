@@ -89,7 +89,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -161,6 +161,8 @@
     <Compile Include="Controllers\CraftingController.cs" />
     <Compile Include="Controllers\ModsController.cs" />
     <Compile Include="Dto\CraftingRecipeIngredient.cs" />
+    <Compile Include="Dto\ItemResponse.cs" />
+    <Compile Include="Dto\PutItemRequest.cs" />
     <Compile Include="Dto\PostCraftingRecipeRequest.cs" />
     <Compile Include="Dto\CreateItemDto.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
@@ -170,6 +172,8 @@
     <Compile Include="Conventions\StringTypeConvention.cs" />
     <Compile Include="Ioc\AutoMapperPackage.cs" />
     <Compile Include="Ioc\DtoMappingProfile.cs" />
+    <Compile Include="Ioc\MappingExpressionExtensions.cs" />
+    <Compile Include="Ioc\NHibernatePackage.cs" />
     <Compile Include="Ioc\RepositoryPackage.cs" />
     <Compile Include="Orm\CraftingProcess.cs" />
     <Compile Include="Orm\CraftingProcessType.cs" />
@@ -177,6 +181,8 @@
     <Compile Include="Orm\Mod.cs" />
     <Compile Include="Orm\CraftingRecipeIngredient.cs" />
     <Compile Include="Orm\CraftingRecipe.cs" />
+    <Compile Include="Persistance\IItemsRepository.cs" />
+    <Compile Include="Persistance\ItemsRepository.cs" />
     <Compile Include="Processing\RecipeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

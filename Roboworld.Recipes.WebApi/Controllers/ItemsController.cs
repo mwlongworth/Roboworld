@@ -7,83 +7,128 @@
 namespace Roboworld.Recipes.WebApi.Controllers
 {
     using System;
+    using System.Threading.Tasks;
     using System.Web.Http;
 
     using AutoMapper;
 
-    using NHibernate;
-
     using Roboworld.Recipes.WebApi.Dto;
     using Roboworld.Recipes.WebApi.Orm;
+    using Roboworld.Recipes.WebApi.Persistance;
 
     [RoutePrefix("items")]
     public class ItemsController : ApiController
     {
-        private readonly ISession session;
+        private readonly IItemsRepository repository;
         private readonly IMapper mapper;
 
-        public ItemsController(ISession session, IMapper mapper)
+        public ItemsController(IItemsRepository repository, IMapper mapper)
         {
-            if (session == null) throw new ArgumentNullException(nameof(session));
+            if (repository == null) throw new ArgumentNullException(nameof(repository));
             if (mapper == null) throw new ArgumentNullException(nameof(mapper));
-            this.session = session;
+            this.repository = repository;
             this.mapper = mapper;
         }
 
         [HttpGet]
         [Route("")]
-        public IHttpActionResult GetAll()
+        public async Task<IHttpActionResult> GetAll()
         {
-            return this.Ok(this.session.QueryOver<Item>().List());
+            var items = await this.repository.GetAllItemsAsync();
+            return this.Ok(items);
         }
 
         [HttpGet]
         [Route("test")]
-        public IHttpActionResult JsonTest()
+        public async Task<IHttpActionResult> JsonTest()
         {
             return this.Ok(new object[] { 1, "two", "3" });
         }
-
+        
         [HttpPost]
         [Route("")]
-        public IHttpActionResult CreateItem(CreateItemDto item)
+        public async Task<IHttpActionResult> CreateItem(CreateItemDto item)
         {
             var entity = this.mapper.Map<Item>(item);
-            this.session.Save(entity);
+            await this.repository.SaveAsync(entity);
 
             return this.Ok(entity);
         }
 
+        /*
         [HttpPut]
         [Route("{id}")]
-        public IHttpActionResult EditItem(int id, CreateItemDto item)
+        public Task<IHttpActionResult> EditItem(int id, CreateItemDto item)
         {
-            var entity = this.session.QueryOver<Item>().Where(o => o.Id == id).SingleOrDefault();
+            var entity = this.repository.QueryOver<Item>().Where(o => o.Id == id).SingleOrDefault();
 
             this.mapper.Map(item, entity);
-            using (var transaction = this.session.BeginTransaction())
+            using (var transaction = this.repository.BeginTransaction())
             {
-                this.session.Update(entity);
+                this.repository.Update(entity);
                 transaction.Commit();
             }
 
             return this.Ok(entity);
+        }*/
+
+        [HttpPut]
+        [Route("{mod}/{name}")]
+        public async Task<IHttpActionResult> PutByModAndName(string mod, string name, PutItemRequest item)
+        {
+            var existing = await this.repository.GetByModAndNameAsync(mod, name);
+
+            if (existing == null)
+            {
+                existing = this.mapper.Map<Item>(item);
+                var modEntity = await this.GetNewOrExistingMod(mod);
+                existing.Mod = modEntity;
+                existing.Slug = name;
+            }
+            else
+            {
+                this.mapper.Map(item, existing);
+            }
+
+            await this.repository.SaveAsync(existing);
+
+            var response = this.mapper.Map<ItemResponse>(existing);
+            return this.Ok(response);
         }
 
+        private async Task<Mod> GetNewOrExistingMod(string mod)
+        {
+            var existing = await this.repository.GetModAsync(mod);
+
+            if(existing == null)
+            {
+                existing = new Mod
+                               {
+                                   Slug = mod,
+                                   Name = mod,
+                                   Version = "unknown"
+                               };
+                await this.repository.SaveAsync(existing);
+            }
+
+            return existing;
+        }
+
+        /*
         [HttpGet]
         [Route("{id}")]
         public IHttpActionResult GetById(int id)
         {
-            return this.Ok(this.session.QueryOver<Item>().Where(o => o.Id == id).SingleOrDefault());
+            return this.Ok(this.repository.QueryOver<Item>().Where(o => o.Id == id).SingleOrDefault());
         }
 
         [HttpGet]
         [Route("{itemId}/recipes")]
         public IHttpActionResult GetAllRecipes(int itemId)
         {
-            var craftingRecipes = this.session.QueryOver<CraftingRecipe>().Where(o => o.Output.Id == itemId).List();
+            var craftingRecipes = this.repository.QueryOver<CraftingRecipe>().Where(o => o.Output.Id == itemId).List();
 
             return this.Ok(craftingRecipes);
-        }
+        }*/
     }
 }
