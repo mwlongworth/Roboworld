@@ -73,7 +73,7 @@ namespace Roboworld.Recipes.WebApi.Controllers
         }*/
 
         [HttpPut]
-        [Route("{mod}/{name}")]
+        [Route("")]
         public async Task<IHttpActionResult> PutByModAndName(string mod, string name, PutItemRequest item)
         {
             var existing = await this.repository.GetByModAndNameAsync(mod, name);

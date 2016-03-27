@@ -28,7 +28,7 @@ namespace Roboworld.WebApp.Crafting
         {
             var path = string.Format(
                 CultureInfo.InvariantCulture,
-                "http://localhost/Roboworld.Recipes.WebApi/items/{0}/{1}",
+                "http://localhost/Roboworld.Recipes.WebApi/items?mod={0}&name={1}",
                 HttpUtility.UrlEncode(item.Mod),
                 HttpUtility.UrlEncode(item.Name));
 
@@ -43,7 +43,7 @@ namespace Roboworld.WebApp.Crafting
         {
             var path = string.Format(
                  CultureInfo.InvariantCulture,
-                 "http://localhost/Roboworld.Recipes.WebApi/items/{0}/{1}/meta/{2}",
+                 "http://localhost/Roboworld.Recipes.WebApi/items?mod={0}&name={1}&meta={2}",
                  HttpUtility.UrlEncode(variant.Item.Mod),
                  HttpUtility.UrlEncode(variant.Item.Name),
                  variant.MetaData);

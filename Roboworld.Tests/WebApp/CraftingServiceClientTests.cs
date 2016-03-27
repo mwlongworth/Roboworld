@@ -51,7 +51,7 @@ namespace Roboworld.Tests.WebApp
 
             this.mockRestClient.Verify(
                 o =>
-                o.SendAsync(It.IsAny<HttpMethod>(), It.Is<Uri>(c => c.ToString().Contains("mod%2fname")), It.IsAny<object>()),
+                o.SendAsync(It.IsAny<HttpMethod>(), It.Is<Uri>(c => c.ToString().Contains("mod=mod%2fname")), It.IsAny<object>()),
                 Times.Once);
         }
 
@@ -69,7 +69,7 @@ namespace Roboworld.Tests.WebApp
 
             this.mockRestClient.Verify(
                 o =>
-                o.SendAsync(It.IsAny<HttpMethod>(), It.Is<Uri>(c => c.ToString().Contains("foo%2fbar")), It.IsAny<object>()),
+                o.SendAsync(It.IsAny<HttpMethod>(), It.Is<Uri>(c => c.ToString().Contains("name=foo%2fbar")), It.IsAny<object>()),
                 Times.Once);
         }
 
