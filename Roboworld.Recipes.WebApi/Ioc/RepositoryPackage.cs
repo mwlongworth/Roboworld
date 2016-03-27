@@ -16,6 +16,7 @@ namespace Roboworld.Recipes.WebApi.Ioc
         public void RegisterServices(Container container)
         {
             container.Register<IItemsRepository, ItemsRepository>(Lifestyle.Scoped);
+            container.Register<ITagsRepository, TagsRepository>(Lifestyle.Scoped);
         }
     }
 }

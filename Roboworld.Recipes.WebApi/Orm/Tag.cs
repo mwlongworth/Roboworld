@@ -1,23 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Item.cs" company="Matthew Longworth">
+// <copyright file="Tag.cs" company="Matthew Longworth">
 //   (c) Matthew Longworth 2016
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Roboworld.Recipes.WebApi.Orm
 {
-    public class Item
+    /// <summary>
+    /// A string representation of a JSON-serialised NBT tag
+    /// </summary>
+    public class Tag
     {
         public virtual int Id { get; set; }
 
-        public virtual Mod Mod { get; set; }
-
-        public virtual string Slug { get; set; }
-
-        public virtual bool HasBlock { get; set; }
-
-        public virtual int? LegacyId { get; set; }
-
-        public virtual bool Deleted { get; set; }
+        public virtual string TagText { get; set; }
     }
 }

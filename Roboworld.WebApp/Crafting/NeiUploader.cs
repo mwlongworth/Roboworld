@@ -39,6 +39,8 @@ namespace Roboworld.WebApp.Crafting
 
         public async Task UploadVariantsAsync(IReadOnlyList<NeiItemVariant> variants)
         {
+            return; // Disabled for now
+
             foreach (var neiVariant in variants)
             {
                 var variant = this.mapper.Map<ItemVariant>(neiVariant);

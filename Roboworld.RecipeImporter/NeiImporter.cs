@@ -49,17 +49,21 @@ namespace Roboworld.RecipeImporter
         {
             var variants = new List<NeiItemVariant>();
 
-            using (var itemStream = this.fileProvider.Read("itempanel.csv"))
-            using (var reader = new StreamReader(itemStream))
-            using (var csv = new CsvHelper.CsvReader(reader))
+            using (var csvStream = this.fileProvider.Read("itempanel.csv"))
+            using (var jsonStream = this.fileProvider.Read("itempanel.json"))
+            using (var csvReader = new StreamReader(csvStream))
+            using (var jsonReader = new StreamReader(jsonStream))
+            using (var csv = new CsvHelper.CsvReader(csvReader))
             {
+                var json = new NeiJsonParser(jsonReader);
                 while (csv.Read())
                 {
-                    var row = csv.CurrentRecord;
-                    var name = row[0].Split(':');
-                    var displayName = row[4];
-                    var itemId = int.Parse(row[1]);
-                    var metadata = int.Parse(row[2]);
+                    var csvRow = csv.CurrentRecord;
+                    var jsonRow = json.ReadLine();
+                    var name = csvRow[0].Split(':');
+                    var displayName = csvRow[4];
+                    var itemId = int.Parse(csvRow[1]);
+                    var metadata = int.Parse(csvRow[2]);
 
                     var key = new NeiItem { Mod = name[0], Name = name[1], ItemId = itemId };
                     if (!this.allItems.Contains(key))

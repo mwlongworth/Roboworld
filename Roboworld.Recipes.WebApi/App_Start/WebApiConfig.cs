@@ -9,6 +9,7 @@ namespace Roboworld.Recipes.WebApi
     using System.Linq;
     using System.Net.Http.Formatting;
     using System.Web.Http;
+    using System.Web.Routing;
 
     using Newtonsoft.Json.Serialization;
 
@@ -18,6 +19,8 @@ namespace Roboworld.Recipes.WebApi
         {
             // Web API routes
             config.MapHttpAttributeRoutes();
+            RouteTable.Routes.RouteExistingFiles = false;
+            
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

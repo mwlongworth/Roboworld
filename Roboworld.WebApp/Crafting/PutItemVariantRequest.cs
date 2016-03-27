@@ -1,17 +1,13 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ICraftingServiceClient.cs" company="Matthew Longworth">
+// <copyright file="PutItemVariantRequest.cs" company="Matthew Longworth">
 //   (c) Matthew Longworth 2016
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Roboworld.WebApp.Crafting
 {
-    using System.Threading.Tasks;
-
-    public interface ICraftingServiceClient
+    public class PutItemVariantRequest
     {
-        Task PutItemAsync(Item item);
-
-        Task PutItemVariantAsync(ItemVariant variant);
+        public string DisplayName { get; set; }
     }
 }

@@ -158,9 +158,13 @@
     <Compile Include="Crafting\CraftingServiceClient.cs" />
     <Compile Include="Crafting\ICraftingServiceClient.cs" />
     <Compile Include="Crafting\INeiUploader.cs" />
+    <Compile Include="Crafting\IRestClient.cs" />
     <Compile Include="Crafting\Item.cs" />
     <Compile Include="Crafting\ItemVariant.cs" />
     <Compile Include="Crafting\NeiUploader.cs" />
+    <Compile Include="Crafting\PutItemRequest.cs" />
+    <Compile Include="Crafting\PutItemVariantRequest.cs" />
+    <Compile Include="Crafting\RestClient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

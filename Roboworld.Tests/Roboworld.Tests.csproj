@@ -93,8 +93,10 @@
       <DependentUpon>VanillaMinecraftRecipes.feature</DependentUpon>
     </Compile>
     <Compile Include="RecipeImporter\ArchiveReaderTest.cs" />
+    <Compile Include="RecipeImporter\NeiJsonParserTests.cs" />
     <Compile Include="Testing\AutoMapperTester.cs" />
     <Compile Include="WebApp\Automapper\NeiUploaderProfileTests.cs" />
+    <Compile Include="WebApp\CraftingServiceClientTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

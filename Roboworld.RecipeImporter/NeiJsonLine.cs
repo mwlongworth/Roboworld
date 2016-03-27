@@ -1,17 +1,17 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ICraftingServiceClient.cs" company="Matthew Longworth">
+// <copyright file="NeiJsonLine.cs" company="Matthew Longworth">
 //   (c) Matthew Longworth 2016
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.WebApp.Crafting
+namespace Roboworld.RecipeImporter
 {
-    using System.Threading.Tasks;
-
-    public interface ICraftingServiceClient
+    public class NeiJsonLine
     {
-        Task PutItemAsync(Item item);
+        public int ItemId { get; set; }
 
-        Task PutItemVariantAsync(ItemVariant variant);
+        public int Metadata { get; set; }
+
+        public string TagText { get; set; }
     }
 }

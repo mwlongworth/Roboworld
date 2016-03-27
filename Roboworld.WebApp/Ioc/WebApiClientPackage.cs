@@ -18,6 +18,7 @@ namespace Roboworld.WebApp.Ioc
         public void RegisterServices(Container container)
         {
             container.RegisterSingleton(() => new HttpClient());
+            container.RegisterSingleton<IRestClient, RestClient>();
             container.RegisterSingleton<ICraftingServiceClient, CraftingServiceClient>();
         }
     }

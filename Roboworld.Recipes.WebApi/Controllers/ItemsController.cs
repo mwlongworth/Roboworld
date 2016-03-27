@@ -39,8 +39,8 @@ namespace Roboworld.Recipes.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("test")]
-        public async Task<IHttpActionResult> JsonTest()
+        [Route("test/{id}")]
+        public async Task<IHttpActionResult> JsonTest(string id)
         {
             return this.Ok(new object[] { 1, "two", "3" });
         }

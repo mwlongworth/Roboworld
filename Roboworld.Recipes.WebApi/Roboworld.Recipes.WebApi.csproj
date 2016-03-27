@@ -159,6 +159,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CraftingController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\ModsController.cs" />
     <Compile Include="Dto\CraftingRecipeIngredient.cs" />
     <Compile Include="Dto\ItemResponse.cs" />
@@ -181,7 +182,10 @@
     <Compile Include="Orm\Mod.cs" />
     <Compile Include="Orm\CraftingRecipeIngredient.cs" />
     <Compile Include="Orm\CraftingRecipe.cs" />
+    <Compile Include="Orm\Tag.cs" />
     <Compile Include="Persistance\IItemsRepository.cs" />
+    <Compile Include="Persistance\ITagsRepository.cs" />
+    <Compile Include="Persistance\TagsRepository.cs" />
     <Compile Include="Persistance\ItemsRepository.cs" />
     <Compile Include="Processing\RecipeType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
