@@ -82,7 +82,22 @@ namespace Roboworld.Tests.RecipeImporter
             result.Should().NotBeNull();
             result.ItemId.Should().Be(6999);
             result.Metadata.Should().Be(0);
-            result.TagText.Should().NotBeNull();
+            result.TagText.Should().Be("{internalMaxPower:1600000.0d,internalCurrentPower:1600000.0d}");
+        }
+
+
+        [Test]
+        public void ReadLine_WhenLineHasTagWithMultiLines_ThenIsReadCorrectly()
+        {
+            const string Content = "{id:6999s,tag:{internalMaxPower:1600000.0d\r\n,internalCurrentPower:1600000.0d},Damage:0s}";
+
+            var sut = this.BuildDefaultSubjectUnderTest(Content);
+            var result = sut.ReadLine();
+
+            result.Should().NotBeNull();
+            result.ItemId.Should().Be(6999);
+            result.Metadata.Should().Be(0);
+            result.TagText.Should().Be("{internalMaxPower:1600000.0d,internalCurrentPower:1600000.0d}");
         }
 
         private NeiJsonParser BuildDefaultSubjectUnderTest(string content)
