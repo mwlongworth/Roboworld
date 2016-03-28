@@ -8,7 +8,7 @@ namespace Roboworld.WebApp.Ioc
 {
     using AutoMapper;
 
-    using Roboworld.RecipeImporter;
+    using Roboworld.RecipeImporter.Nei;
     using Roboworld.WebApp.Crafting;
 
     public class NeiUploaderProfile : Profile

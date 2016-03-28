@@ -5,19 +5,23 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <h2>NEI</h2>
+        <p>Import all the base items from NEI data dumps</p>
         <p>
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#neiModel">
                 <i class="fa fa-puzzle-piece"></i>
                 Upload NEI data
             </button>
         </p>
     </div>
     <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-default" href="#" role="button">View details »</a>
+        <h2>Crafting Guide</h2>
+        <p>Imports recipes from <a href="http://crafting-guide.com/">Crafting Guide</a>.</p>
+        <p>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cgModal">
+                <i class="fa fa-calculator"></i>
+                Upload Crafting Recipes
+            </button>
         </p>
     </div>
     <div class="col-md-4">
@@ -29,13 +33,35 @@
 </div>
 
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="neiModel" tabindex="-1" role="dialog" aria-labelledby="neiModalLabel">
     <div class="modal-dialog" role="document">
-        <form method="post" action="@Url.Action()" enctype="multipart/form-data">
+        <form method="post" action="@Url.Action("Nei", "Upload")" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Upload NEI Data</h4>
+                    <h4 class="modal-title" id="neiModalLabel">Upload NEI Data</h4>
+                </div>
+                <div class="modal-body">
+
+                    <input type="file" name="@Html.NameFor(o=> o.File)" />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-lg btn-success">Upload</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="cgModal" tabindex="-1" role="dialog" aria-labelledby="cgModalLabel">
+    <div class="modal-dialog" role="document">
+        <form method="post" action="@Url.Action("CraftingGuide", "Upload")" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="cgModalLabel">Upload Crafting Guide Recipes</h4>
                 </div>
                 <div class="modal-body">
 

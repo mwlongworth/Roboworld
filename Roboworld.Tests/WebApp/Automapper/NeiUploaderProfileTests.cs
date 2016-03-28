@@ -13,6 +13,7 @@ namespace Roboworld.Tests.WebApp.Automapper
     using NUnit.Framework;
 
     using Roboworld.RecipeImporter;
+    using Roboworld.RecipeImporter.Nei;
     using Roboworld.Tests.Testing;
     using Roboworld.WebApp.Ioc;
 

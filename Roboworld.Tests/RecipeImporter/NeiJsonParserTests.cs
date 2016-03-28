@@ -13,7 +13,7 @@ namespace Roboworld.Tests.RecipeImporter
 
     using NUnit.Framework;
 
-    using Roboworld.RecipeImporter;
+    using Roboworld.RecipeImporter.Nei;
 
     [TestFixture]
     [Category("Unit")]

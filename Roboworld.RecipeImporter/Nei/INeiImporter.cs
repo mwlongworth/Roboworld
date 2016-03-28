@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.RecipeImporter
+namespace Roboworld.RecipeImporter.Nei
 {
     using System.Collections.Generic;
 

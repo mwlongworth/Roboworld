@@ -7,16 +7,18 @@
 namespace Roboworld.WebApp.Controllers
 {
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
     using Newtonsoft.Json;
 
     using Roboworld.RecipeImporter;
+    using Roboworld.RecipeImporter.CraftingGuide;
+    using Roboworld.RecipeImporter.Nei;
     using Roboworld.WebApp.Crafting;
     using Roboworld.WebApp.Models;
 
+    [RoutePrefix("upload")]
     public class UploadController : Controller
     {
         private readonly INeiUploader neiUploader;
@@ -35,12 +37,12 @@ namespace Roboworld.WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Index(SimpleUploadViewModel model)
+        public async Task<ActionResult> Nei(SimpleUploadViewModel model)
         {
             if (model.File == null)
             {
                 this.TempData.Add("flash-danger", "No file was uploaded!");
-                return this.View();
+                return this.View("Index");
             }
 
             var file = model.File;
@@ -49,13 +51,39 @@ namespace Roboworld.WebApp.Controllers
             using (var provider = new NeiDataProvider(archive))
             {
                 var neiImporter = new NeiImporter(provider);
-                //var items = neiImporter.GetAllItems();
+                var items = neiImporter.GetAllItems();
                 var variants = neiImporter.GetAllItemVariants();
 
-                //await this.neiUploader.UploadItemsAsync(items);
+                await this.neiUploader.UploadItemsAsync(items);
                 await this.neiUploader.UploadVariantsAsync(variants);
 
                 return this.Content(JsonConvert.SerializeObject(variants));
+            }
+        }
+
+        [HttpGet]
+        [Route("craftingguide")]
+        public ActionResult CraftingGuide()
+        {
+            return Content("Viewd");
+        }
+
+        [HttpPost]
+        public ActionResult CraftingGuide(SimpleUploadViewModel model)
+        {
+            if (model.File == null)
+            {
+                this.TempData.Add("flash-danger", "No file was uploaded!");
+                return this.View("Index");
+            }
+
+            var file = model.File;
+
+            using (var archive = new ArchiveReader(file.InputStream))
+            using (var provider = new CraftingGuideDataProvider(archive))
+            {
+                var versions = provider.AllModVersions();
+                return this.Content(JsonConvert.SerializeObject(versions));
             }
         }
     }

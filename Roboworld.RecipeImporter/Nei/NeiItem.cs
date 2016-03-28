@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.RecipeImporter
+namespace Roboworld.RecipeImporter.Nei
 {
     /// <summary>
     /// An item from NEI
@@ -36,7 +36,7 @@ namespace Roboworld.RecipeImporter
             {
                 return false;
             }
-            return Equals((NeiItem)obj);
+            return this.Equals((NeiItem)obj);
         }
 
         public override int GetHashCode()

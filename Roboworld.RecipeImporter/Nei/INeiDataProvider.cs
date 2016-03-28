@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.RecipeImporter
+namespace Roboworld.RecipeImporter.Nei
 {
     /// <summary>
     /// Read data out of an archive containing NEI files

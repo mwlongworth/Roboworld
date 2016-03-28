@@ -50,19 +50,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArchiveReader.cs" />
+    <Compile Include="CraftingGuide\CraftingGuideDataProvider.cs" />
+    <Compile Include="CraftingGuide\ICraftingGuideDataProvider.cs" />
     <Compile Include="IFileProvider.cs" />
-    <Compile Include="INeiDataProvider.cs" />
-    <Compile Include="INeiImporter.cs" />
-    <Compile Include="NeiDataProvider.cs" />
-    <Compile Include="NeiItemPanelCsvLine.cs" />
-    <Compile Include="NeiItemPanelCsvParser.cs" />
-    <Compile Include="NeiItemsCsvLine.cs" />
-    <Compile Include="NeiCsvParser.cs" />
-    <Compile Include="NeiImporter.cs" />
-    <Compile Include="NeiItem.cs" />
-    <Compile Include="NeiItemVariant.cs" />
-    <Compile Include="NeiJsonLine.cs" />
-    <Compile Include="NeiJsonParser.cs" />
+    <Compile Include="Nei\INeiDataProvider.cs" />
+    <Compile Include="Nei\INeiImporter.cs" />
+    <Compile Include="Nei\NeiDataProvider.cs" />
+    <Compile Include="Nei\NeiItemPanelCsvLine.cs" />
+    <Compile Include="Nei\NeiItemPanelCsvParser.cs" />
+    <Compile Include="Nei\NeiItemsCsvLine.cs" />
+    <Compile Include="Nei\NeiCsvParser.cs" />
+    <Compile Include="Nei\NeiImporter.cs" />
+    <Compile Include="Nei\NeiItem.cs" />
+    <Compile Include="Nei\NeiItemVariant.cs" />
+    <Compile Include="Nei\NeiJsonLine.cs" />
+    <Compile Include="Nei\NeiJsonParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

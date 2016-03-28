@@ -13,6 +13,7 @@ namespace Roboworld.WebApp.Crafting
     using AutoMapper;
 
     using Roboworld.RecipeImporter;
+    using Roboworld.RecipeImporter.Nei;
 
     public class NeiUploader : INeiUploader
     {
