@@ -14,6 +14,7 @@ namespace Roboworld.WebApp.Controllers
 
     using Roboworld.RecipeImporter;
     using Roboworld.RecipeImporter.CraftingGuide;
+    using Roboworld.RecipeImporter.MineTweaker;
     using Roboworld.RecipeImporter.Nei;
     using Roboworld.WebApp.Crafting;
     using Roboworld.WebApp.Models;
@@ -61,13 +62,6 @@ namespace Roboworld.WebApp.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("craftingguide")]
-        public ActionResult CraftingGuide()
-        {
-            return Content("Viewd");
-        }
-
         [HttpPost]
         public ActionResult CraftingGuide(SimpleUploadViewModel model)
         {
@@ -83,6 +77,25 @@ namespace Roboworld.WebApp.Controllers
             using (var provider = new CraftingGuideDataProvider(archive))
             {
                 var versions = provider.AllModVersions();
+                return this.Content(JsonConvert.SerializeObject(versions));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult MineTweaker(SimpleUploadViewModel model)
+        {
+            if (model.File == null)
+            {
+                this.TempData.Add("flash-danger", "No file was uploaded!");
+                return this.View("Index");
+            }
+
+            var file = model.File;
+
+            using (var archive = new ArchiveReader(file.InputStream))
+            using (var provider = new MineTweakerDataProvider(archive))
+            {
+                var versions = provider.AllScriptNames();
                 return this.Content(JsonConvert.SerializeObject(versions));
             }
         }

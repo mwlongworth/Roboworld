@@ -53,6 +53,8 @@
     <Compile Include="CraftingGuide\CraftingGuideDataProvider.cs" />
     <Compile Include="CraftingGuide\ICraftingGuideDataProvider.cs" />
     <Compile Include="IFileProvider.cs" />
+    <Compile Include="MineTweaker\MineTweakerDataProvider.cs" />
+    <Compile Include="MineTweaker\IMineTweakerDataProvider.cs" />
     <Compile Include="Nei\INeiDataProvider.cs" />
     <Compile Include="Nei\INeiImporter.cs" />
     <Compile Include="Nei\NeiDataProvider.cs" />
