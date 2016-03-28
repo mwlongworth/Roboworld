@@ -14,6 +14,6 @@ namespace Roboworld.RecipeImporter
 
         public string DisplayName { get; set; }
 
-        public object Tag { get; set; }
+        public string TagText { get; set; }
     }
 }

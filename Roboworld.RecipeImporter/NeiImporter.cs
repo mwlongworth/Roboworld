@@ -49,7 +49,7 @@ namespace Roboworld.RecipeImporter
                                       Item = key,
                                       Metadata = line.Metadata,
                                       DisplayName = line.DisplayName,
-                                      Tag = jsonIsValid ? jsonLine.TagText : null
+                                      TagText = jsonIsValid ? jsonLine.TagText : null
                                   };
 
                 variants.Add(variant);

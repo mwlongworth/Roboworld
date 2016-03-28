@@ -34,25 +34,27 @@ namespace Roboworld.WebApp.Crafting
 
             var uri = new Uri(path);
 
-            var obj = new PutItemRequest();
-            var content = new ObjectContent<PutItemRequest>(obj, new JsonMediaTypeFormatter());
-            await this.restClient.SendAsync(HttpMethod.Put, uri, content);
+            var data = new PutItemRequest();
+            await this.restClient.SendAsync(HttpMethod.Put, uri, data);
         }
 
         public async Task PutItemVariantAsync(ItemVariant variant)
         {
             var path = string.Format(
                  CultureInfo.InvariantCulture,
-                 "http://localhost/Roboworld.Recipes.WebApi/items?mod={0}&name={1}&meta={2}",
+                 "http://mattl-pc/Roboworld.Recipes.WebApi/items/variant?mod={0}&name={1}&meta={2}",
                  HttpUtility.UrlEncode(variant.Item.Mod),
                  HttpUtility.UrlEncode(variant.Item.Name),
                  variant.MetaData);
 
             var uri = new Uri(path);
 
-            var obj = new PutItemVariantRequest();
-            var content = new ObjectContent<PutItemVariantRequest>(obj, new JsonMediaTypeFormatter());
-            await this.restClient.SendAsync(HttpMethod.Put, uri, content);
+            var data = new PutItemVariantRequest
+                          {
+                              DisplayName = variant.DisplayName,
+                              TagText = variant.TagText
+                          };
+            await this.restClient.SendAsync(HttpMethod.Put, uri, data);
         }
     }
 }

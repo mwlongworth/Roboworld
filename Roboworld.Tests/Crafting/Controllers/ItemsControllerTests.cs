@@ -43,7 +43,7 @@ namespace Roboworld.Tests.Crafting.Controllers
             var item = new PutItemRequest();
 
             var sut = this.BuildDefaultSubjectUnderTest();
-            await sut.PutByModAndName(mod, name, item);
+            await sut.PutItem(mod, name, item);
 
             this.mockRepository.Verify(o => o.GetByModAndNameAsync(mod, name), Times.Once);
         }
@@ -59,7 +59,7 @@ namespace Roboworld.Tests.Crafting.Controllers
                 .ReturnsAsync(existing);
 
             var sut = this.BuildDefaultSubjectUnderTest();
-            await sut.PutByModAndName(StringGenerator.AnyNonNullString(), StringGenerator.AnyNonNullString(), item);
+            await sut.PutItem(StringGenerator.AnyNonNullString(), StringGenerator.AnyNonNullString(), item);
 
             this.mockRepository.Verify(o => o.SaveAsync(existing), Times.Once);
         }
@@ -75,7 +75,7 @@ namespace Roboworld.Tests.Crafting.Controllers
                 .ReturnsAsync(existing);
 
             var sut = this.BuildDefaultSubjectUnderTest();
-            await sut.PutByModAndName(StringGenerator.AnyNonNullString(), StringGenerator.AnyNonNullString(), item);
+            await sut.PutItem(StringGenerator.AnyNonNullString(), StringGenerator.AnyNonNullString(), item);
 
             this.mockMapper.Verify(o => o.Map(item, existing), Times.Once);
         }
@@ -91,7 +91,7 @@ namespace Roboworld.Tests.Crafting.Controllers
                 .ReturnsAsync(null);
 
             var sut = this.BuildDefaultSubjectUnderTest();
-            await sut.PutByModAndName(mod, StringGenerator.AnyNonNullString(), item);
+            await sut.PutItem(mod, StringGenerator.AnyNonNullString(), item);
 
             this.mockRepository.Verify(o => o.GetModAsync(mod), Times.Once);
         }
@@ -110,7 +110,7 @@ namespace Roboworld.Tests.Crafting.Controllers
 
 
             var sut = this.BuildDefaultSubjectUnderTest();
-            await sut.PutByModAndName(mod, StringGenerator.AnyNonNullString(), item);
+            await sut.PutItem(mod, StringGenerator.AnyNonNullString(), item);
 
             this.mockRepository.Verify(o => o.SaveAsync(It.IsAny<Mod>()), Times.Once);
         }
@@ -125,7 +125,7 @@ namespace Roboworld.Tests.Crafting.Controllers
                 .ReturnsAsync(null);
 
             var sut = this.BuildDefaultSubjectUnderTest();
-            await sut.PutByModAndName(StringGenerator.AnyNonNullString(), StringGenerator.AnyNonNullString(), item);
+            await sut.PutItem(StringGenerator.AnyNonNullString(), StringGenerator.AnyNonNullString(), item);
 
             this.mockMapper.Verify(o => o.Map<Item>(item), Times.Once);
         }
@@ -145,7 +145,7 @@ namespace Roboworld.Tests.Crafting.Controllers
                 .Returns(newItem);
 
             var sut = this.BuildDefaultSubjectUnderTest();
-            await sut.PutByModAndName(StringGenerator.AnyNonNullString(), StringGenerator.AnyNonNullString(), item);
+            await sut.PutItem(StringGenerator.AnyNonNullString(), StringGenerator.AnyNonNullString(), item);
 
             this.mockRepository.Verify(o => o.SaveAsync(newItem), Times.Once);
         }

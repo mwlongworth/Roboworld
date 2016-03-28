@@ -39,6 +39,12 @@ namespace Roboworld.Recipes.WebApi.Persistance
             return Task.FromResult(0);
         }
 
+        public Task SaveAsync(ItemVariant variant)
+        {
+            this.session.SaveOrUpdate(variant);
+            return Task.FromResult(0);
+        }
+
         public Task SaveAsync(Mod mod)
         {
             this.session.SaveOrUpdate(mod);
@@ -48,6 +54,14 @@ namespace Roboworld.Recipes.WebApi.Persistance
         public Task<Item> GetByModAndNameAsync(string mod, string name)
         {
             var item = this.session.Query<Item>().SingleOrDefault(o => o.Mod.Name == mod && o.Slug == name);
+            return Task.FromResult(item);
+        }
+
+        public Task<ItemVariant> GetVariant(string mod, string name, int meta)
+        {
+            var item =
+                this.session.Query<ItemVariant>()
+                    .SingleOrDefault(o => o.Item.Mod.Name == mod && o.Item.Slug == name && o.Metadata == meta);
             return Task.FromResult(item);
         }
 

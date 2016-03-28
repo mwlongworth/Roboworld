@@ -12,7 +12,7 @@ namespace Roboworld.WebApp.Crafting
 
         public int MetaData { get; set; }
 
-        public object Tag { get; set; }
+        public string TagText { get; set; }
 
         public string DisplayName { get; set; }
     }

@@ -1,17 +1,15 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IRestClient.cs" company="Matthew Longworth">
+// <copyright file="PutItemVariantRequest.cs" company="Matthew Longworth">
 //   (c) Matthew Longworth 2016
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Roboworld.WebApp.Crafting
+namespace Roboworld.Recipes.WebApi.Dto
 {
-    using System;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-
-    public interface IRestClient
+    public class PutItemVariantRequest
     {
-        Task SendAsync(HttpMethod method, Uri uri, object data);
+        public string DisplayName { get; set; }
+
+        public string TagText { get; set; }
     }
 }

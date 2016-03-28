@@ -74,7 +74,7 @@ namespace Roboworld.Recipes.WebApi.Controllers
 
         [HttpPut]
         [Route("")]
-        public async Task<IHttpActionResult> PutByModAndName(string mod, string name, PutItemRequest item)
+        public async Task<IHttpActionResult> PutItem(string mod, string name, PutItemRequest item)
         {
             var existing = await this.repository.GetByModAndNameAsync(mod, name);
 
@@ -93,6 +93,41 @@ namespace Roboworld.Recipes.WebApi.Controllers
             await this.repository.SaveAsync(existing);
 
             var response = this.mapper.Map<ItemResponse>(existing);
+            return this.Ok(response);
+        }
+
+        [HttpPut]
+        [Route("variant")]
+        public async Task<IHttpActionResult> PutVariant(string mod, string name, int meta, [FromBody]PutItemVariantRequest variant)
+        {
+            var item = await this.repository.GetByModAndNameAsync(mod, name);
+
+            if (item == null)
+            {
+                return this.BadRequest("Item not found");
+            }
+
+            if (!string.IsNullOrEmpty(variant.TagText))
+            {
+                return this.Ok();
+            }
+
+            var existing = await this.repository.GetVariant(mod, name, meta);
+
+            if (existing == null)
+            {
+                existing = this.mapper.Map<ItemVariant>(variant);
+                existing.Metadata = meta;
+                existing.Item = item;
+            }
+            else
+            {
+                this.mapper.Map(variant, existing);
+            }
+
+            await this.repository.SaveAsync(existing);
+
+            var response = this.mapper.Map<ItemVariantResponse>(existing);
             return this.Ok(response);
         }
 

@@ -163,6 +163,7 @@
     <Compile Include="Controllers\ModsController.cs" />
     <Compile Include="Dto\CraftingRecipeIngredient.cs" />
     <Compile Include="Dto\ItemResponse.cs" />
+    <Compile Include="Dto\ItemVariantResponse.cs" />
     <Compile Include="Dto\PutItemRequest.cs" />
     <Compile Include="Dto\PostCraftingRecipeRequest.cs" />
     <Compile Include="Dto\CreateItemDto.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Conventions\CascadeConvention.cs" />
     <Compile Include="Conventions\EnumConvention.cs" />
     <Compile Include="Conventions\StringTypeConvention.cs" />
+    <Compile Include="Dto\PutItemVariantRequest.cs" />
     <Compile Include="Ioc\AutoMapperPackage.cs" />
     <Compile Include="Ioc\DtoMappingProfile.cs" />
     <Compile Include="Ioc\MappingExpressionExtensions.cs" />
@@ -179,6 +181,7 @@
     <Compile Include="Orm\CraftingProcess.cs" />
     <Compile Include="Orm\CraftingProcessType.cs" />
     <Compile Include="Orm\Item.cs" />
+    <Compile Include="Orm\ItemVariant.cs" />
     <Compile Include="Orm\Mod.cs" />
     <Compile Include="Orm\CraftingRecipeIngredient.cs" />
     <Compile Include="Orm\CraftingRecipe.cs" />

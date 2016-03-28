@@ -67,6 +67,7 @@
     <Build Include="dbo\Tables\Mod.sql" />
     <Build Include="dbo\Tables\CraftingProcess.sql" />
     <Build Include="dbo\Tables\Tag.sql" />
+    <Build Include="dbo\Tables\ItemVariant.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Roboworld.Recipes.Database.refactorlog" />

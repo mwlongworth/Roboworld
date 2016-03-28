@@ -9,5 +9,7 @@ namespace Roboworld.WebApp.Crafting
     public class PutItemVariantRequest
     {
         public string DisplayName { get; set; }
+
+        public string TagText { get; set; }
     }
 }

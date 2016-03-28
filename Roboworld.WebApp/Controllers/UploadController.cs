@@ -49,11 +49,11 @@ namespace Roboworld.WebApp.Controllers
             using (var provider = new NeiDataProvider(archive))
             {
                 var neiImporter = new NeiImporter(provider);
-                var items = neiImporter.GetAllItems();
+                //var items = neiImporter.GetAllItems();
                 var variants = neiImporter.GetAllItemVariants();
 
-              //  await this.neiUploader.UploadItemsAsync(items);
-                //await this.neiUploader.UploadVariantsAsync(variants);
+                //await this.neiUploader.UploadItemsAsync(items);
+                await this.neiUploader.UploadVariantsAsync(variants);
 
                 return this.Content(JsonConvert.SerializeObject(variants));
             }

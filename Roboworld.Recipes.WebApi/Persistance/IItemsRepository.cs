@@ -17,9 +17,13 @@ namespace Roboworld.Recipes.WebApi.Persistance
 
         Task SaveAsync(Item item);
 
+        Task SaveAsync(ItemVariant variant);
+
         Task SaveAsync(Mod mod);
 
         Task<Item> GetByModAndNameAsync(string mod, string name);
+
+        Task<ItemVariant> GetVariant(string mod, string name, int meta);
 
         Task<Mod> GetModAsync(string mod);
     }
