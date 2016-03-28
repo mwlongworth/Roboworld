@@ -154,6 +154,7 @@
     <Compile Include="App_Start\SimpleInjectorConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Crafting\MineTweakerUploader.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Crafting\CraftingServiceClient.cs" />
     <Compile Include="Crafting\ICraftingServiceClient.cs" />

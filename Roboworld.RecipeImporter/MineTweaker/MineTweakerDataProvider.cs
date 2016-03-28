@@ -8,6 +8,7 @@ namespace Roboworld.RecipeImporter.MineTweaker
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
 
     /// <summary>
@@ -17,7 +18,11 @@ namespace Roboworld.RecipeImporter.MineTweaker
     {
         private readonly IFileProvider fileProvider;
 
+        private readonly Queue<string> scriptNames;
+
         private IList<IDisposable> disposables;
+
+        private TextReader currentReader;
 
         public MineTweakerDataProvider(IFileProvider fileProvider)
         {
@@ -25,7 +30,12 @@ namespace Roboworld.RecipeImporter.MineTweaker
 
             this.fileProvider = fileProvider;
             this.disposables = new List<IDisposable>();
+
+            var scripts = this.fileProvider.Contents.Where(o => o.EndsWith(".zs"));
+            this.scriptNames = new Queue<string>(scripts);
         }
+
+        public IMineTweakerScriptParser CurrentParser { get; private set; }
 
         public void Dispose()
         {
@@ -40,7 +50,32 @@ namespace Roboworld.RecipeImporter.MineTweaker
 
         public IReadOnlyList<string> AllScriptNames()
         {
-            return this.fileProvider.Contents.Where(o => o.EndsWith(".zs")).ToList();
+            return scriptNames.ToList();
+        }
+
+        public bool ReadNextScript()
+        {
+            if (this.scriptNames.Count == 0)
+            {
+                return false;
+            }
+
+            var nextScriptPath = this.scriptNames.Dequeue();
+            if (this.CurrentParser != null)
+            {
+                this.CurrentParser.Dispose();
+            }
+
+            if (this.currentReader != null)
+            {
+                this.currentReader.Dispose();
+            }
+
+            var reader = this.fileProvider.TextReaderFor(nextScriptPath);
+            this.CurrentParser = new MineTweakerScriptParser(reader);
+            this.currentReader = reader;
+
+            return true;
         }
     }
 }

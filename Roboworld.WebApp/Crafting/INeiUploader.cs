@@ -9,7 +9,6 @@ namespace Roboworld.WebApp.Crafting
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Roboworld.RecipeImporter;
     using Roboworld.RecipeImporter.Nei;
 
     public interface INeiUploader

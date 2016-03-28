@@ -1,19 +1,17 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IMineTweakerDataProvider.cs" company="Matthew Longworth">
+// <copyright file="MineTweakerLineType.cs" company="Matthew Longworth">
 //   (c) Matthew Longworth 2016
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Roboworld.RecipeImporter.MineTweaker
 {
-    using System.Collections.Generic;
-
-    public interface IMineTweakerDataProvider
+    public enum MineTweakerLineType
     {
-        IMineTweakerScriptParser CurrentParser { get; }
-
-        IReadOnlyList<string> AllScriptNames();
-
-        bool ReadNextScript();
+        Unknown,
+        Comment,
+        Print,
+        Variable,
+        Command
     }
 }

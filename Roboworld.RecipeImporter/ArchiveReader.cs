@@ -33,6 +33,10 @@ namespace Roboworld.RecipeImporter
             return this.archive.GetEntry(path).Open();
         }
 
+        public TextReader TextReaderFor(string path)
+        {
+            return new DisposableStreamReader(this.Read(path));
+        }
 
         public void Dispose()
         {

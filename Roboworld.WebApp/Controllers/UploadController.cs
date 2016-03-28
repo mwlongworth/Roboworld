@@ -95,8 +95,12 @@ namespace Roboworld.WebApp.Controllers
             using (var archive = new ArchiveReader(file.InputStream))
             using (var provider = new MineTweakerDataProvider(archive))
             {
-                var versions = provider.AllScriptNames();
-                return this.Content(JsonConvert.SerializeObject(versions));
+                var uploader = new MineTweakerUploader();
+                var mtImporter = new MineTweakerImporter(provider, uploader);
+
+                var result = mtImporter.Import();
+                
+                return this.Content(result);
             }
         }
     }

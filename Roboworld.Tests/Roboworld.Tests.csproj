@@ -93,6 +93,7 @@
       <DependentUpon>VanillaMinecraftRecipes.feature</DependentUpon>
     </Compile>
     <Compile Include="RecipeImporter\ArchiveReaderTest.cs" />
+    <Compile Include="RecipeImporter\MineTweakerScriptLineTests.cs" />
     <Compile Include="RecipeImporter\NeiJsonParserTests.cs" />
     <Compile Include="Testing\AutoMapperTester.cs" />
     <Compile Include="WebApp\Automapper\NeiUploaderProfileTests.cs" />

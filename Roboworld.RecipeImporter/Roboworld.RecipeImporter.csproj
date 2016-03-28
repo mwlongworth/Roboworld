@@ -52,9 +52,16 @@
     <Compile Include="ArchiveReader.cs" />
     <Compile Include="CraftingGuide\CraftingGuideDataProvider.cs" />
     <Compile Include="CraftingGuide\ICraftingGuideDataProvider.cs" />
+    <Compile Include="DisposableStreamReader.cs" />
     <Compile Include="IFileProvider.cs" />
+    <Compile Include="MineTweaker\IMineTweakerScriptParser.cs" />
+    <Compile Include="MineTweaker\IMineTweakerUploader.cs" />
     <Compile Include="MineTweaker\MineTweakerDataProvider.cs" />
     <Compile Include="MineTweaker\IMineTweakerDataProvider.cs" />
+    <Compile Include="MineTweaker\MineTweakerImporter.cs" />
+    <Compile Include="MineTweaker\MineTweakerLineType.cs" />
+    <Compile Include="MineTweaker\MineTweakerScriptLine.cs" />
+    <Compile Include="MineTweaker\MineTweakerScriptParser.cs" />
     <Compile Include="Nei\INeiDataProvider.cs" />
     <Compile Include="Nei\INeiImporter.cs" />
     <Compile Include="Nei\NeiDataProvider.cs" />

@@ -17,5 +17,7 @@ namespace Roboworld.RecipeImporter
         IList<string> Contents { get; }
 
         Stream Read(string path);
+
+        TextReader TextReaderFor(string path);
     }
 }
